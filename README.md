@@ -12,6 +12,11 @@ git branch <your branch name>
 git checkout <your branch name>
 3. Start creating / modifying files
 4. Checkin to your own branch using this setup
+ first time you checkin your branch needs to be created on gerrithub, thus make following command
+   git add <your files..>
+   git commit -m "<your checkin info>"
+   git push -u origin <your branch name>
+ next time use normal push
 git push origin HEAD:refs/for/<your branch name>
 5. Check if virtualbox is installed, and if not then install
 PKG_OK=$(dpkg-query -W --showformat='${Status}\n' 2>&1 virtualbox |grep "install ok installed")
