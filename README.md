@@ -33,6 +33,7 @@ via vagrant a master and one node is created in VirtualBox and via puppet master
 ```javascript 
    git push origin HEAD:refs/for/<your branch name>
 ```
+ NB! Inorder to make checkin on this GerritHub project, then you need to create a RSA public key and send to administrator - he will then add it to users, making it possible for you to make reviews on your own branch
 *5 - Check if virtualbox is installed, and if not then install
 ```javascript 
 PKG_OK=$(dpkg-query -W --showformat='${Status}\n' 2>&1 virtualbox |grep "install ok installed")
