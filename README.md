@@ -16,8 +16,9 @@ git checkout <your branch name>
    git add <your files..>
    git commit -m "<your checkin info>"
    git push -u origin <your branch name>
- next time use normal push - this will create a new review on GerritHub and you must review and approve it before submit
-git push origin HEAD:refs/for/<your branch name>
+ next time use normal push - this will create a new review on GerritHub and you must review and approve it before submit - you can find your reviews here: https://review.gerrithub.io/#/q/project:<your branch name>/VagrantPuppetDockerDeploy
+ Normal push command :
+  git push origin HEAD:refs/for/<your branch name>
 5. Check if virtualbox is installed, and if not then install
 PKG_OK=$(dpkg-query -W --showformat='${Status}\n' 2>&1 virtualbox |grep "install ok installed")
 if [ "" == "$PKG_OK" ]; then
