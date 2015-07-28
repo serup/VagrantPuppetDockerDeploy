@@ -25,7 +25,10 @@ via vagrant a master and one node is created in VirtualBox and via puppet master
    git commit -m "<your checkin info>"
    git push -u origin <your branch name>
 ```
- next time use normal push - this will create a new review on GerritHub and you must review and approve it before submit - you can find your reviews here: https://review.gerrithub.io/#/q/project:<your branch name>/VagrantPuppetDockerDeploy
+ next time use normal push - this will create a new review on GerritHub and you must review and approve it before submit - you can find your reviews here:
+```
+  https://review.gerrithub.io/#/q/project:  < your branch name >  /VagrantPuppetDockerDeploy
+```
  Normal push command :
 ```javascript 
    git push origin HEAD:refs/for/<your branch name>
