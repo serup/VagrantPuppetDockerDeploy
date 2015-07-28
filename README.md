@@ -15,7 +15,9 @@ via vagrant a master and one node is created in VirtualBox and via puppet master
   git checkout <your branch name>
 ```
 *3 - Start creating / modifying files
+```
   use your favorite editor to write code
+```
 *4 - Checkin to your own branch using this setup
  first time you checkin your branch needs to be created on gerrithub, thus make following command
 ```javascript 
