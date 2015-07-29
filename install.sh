@@ -23,10 +23,12 @@ if [ "" == "$PKG_OK" ]; then
 else
   echo "- vagrant installed"
 fi
+vagrant box add ubuntu/trusty64 https://atlas.hashicorp.com/ubuntu/boxes/trusty64/versions/14.04/providers/virtualbox.box
 PKG_OK=$(dpkg-query -W --showformat='${Status}\n' 2>&1 puppetlabs-release |grep "install ok installed")
 if [ "" == "$PKG_OK" ]; then
 #  echo "puppetlabs-release was not found, now it will be installed - please wait..."
   echo -n "- install puppetlabs-release "
+  sudo apt-get install puppet-common
   wget https://apt.puppetlabs.com/puppetlabs-release-trusty.deb
   sudo dpkg -i puppetlabs-release-trusty.deb
   sudo apt-get update 
