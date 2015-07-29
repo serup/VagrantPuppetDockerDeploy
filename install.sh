@@ -43,3 +43,4 @@ puppet module install garethr/docker --modulepath ./puppet/trunk/environments/de
 echo "*******************************************************************************************"
 echo "environment is now ready! you may run vagrant up and then vagrant up node01.docker.local"
 echo "*******************************************************************************************"
+
