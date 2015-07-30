@@ -116,5 +116,14 @@ echo "**************************************************************************
   sudo -s
   puppet agent -t
 ```
+**Download a docker test image
+```
+docker run docker/whalesay cowsay boo
+```
+**List installed docker images
+```
+docker images
+```
+
  
 *****************************
