@@ -1,0 +1,6 @@
+this branch will try to get project to work on ubuntu 12  saucy - somehow install is failing with various libraries
+
+
+
+
+
