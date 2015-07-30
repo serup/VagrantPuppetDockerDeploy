@@ -14,8 +14,10 @@ via vagrant a master and one node is created in VirtualBox and via puppet master
   git branch <your branch name>
   git checkout <your branch name>
 ```
-*3 - Start creating / modifying files
+*3 - Setup environment and start creating / modifying files
 ```
+  run the install script - it will setup environment variables, and install needed modules for the project, used later in vagrant up
+  . ./install.sh
   use your favorite editor to write code
 ```
 *4 - Checkin to your own branch using this setup
