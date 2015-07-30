@@ -1,6 +1,10 @@
 this branch will try to get project to work on ubuntu 12  saucy - somehow install is failing with various libraries
 
+# online info about saucy outdated linux versions
+https://smyl.es/how-to-fix-ubuntudebian-apt-get-404-not-found-package-repository-errors-saucy-raring-quantal-oneiric-natty/
 
+# the update script file should fix errors
 
-
+# change the sources.list file
+sed -i -e 's/archive.ubuntu.com\|security.ubuntu.com/old-releases.ubuntu.com/g' /etc/apt/sources.liste 's/archive.ubuntu.com\|security.ubuntu.com/old-releases.ubuntu.com/g' /etc/apt/sources.listu
 
