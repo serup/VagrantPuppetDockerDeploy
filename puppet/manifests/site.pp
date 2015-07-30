@@ -4,6 +4,10 @@ node default {
 }
 
 node /^node01.*/ {
+
+  # howto manually apply this manifest file -- make sure you are sudo
+  # puppet apply /vagrant/puppet/manifests/site.pp --modulepath /vagrant/puppet/trunk/environments/devtest/modules/
+
   # Test message
   notify { "Debug output on ${fqdn}": }
 
