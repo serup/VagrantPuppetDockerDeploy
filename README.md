@@ -4,23 +4,23 @@ via vagrant a master and one node is created in VirtualBox and via puppet master
 *********************************************************************
 **get started with VagrantPuppetDockerDeploy project on new machine**
 *********************************************************************
-**Clone the gerrit repository
+**Clone the gerrit repository**
 ```javascript 
   git clone ssh://serup@review.gerrithub.io:29418/serup/VagrantPuppetDockerDeploy && scp -p -P 29418 serup@review.gerrithub.io:hooks/commit-msg VagrantPuppetDockerDeploy/.git/hooks/
   cd VagrantPuppetDockerDeploy/
 ```
-**Create your own branch and checkout
+**Create your own branch and checkout**
 ```javascript 
   git branch <your branch name>
   git checkout <your branch name>
 ```
-**Setup environment and start creating / modifying files
+**Setup environment and start creating / modifying files**
 ```
   run the install script - it will setup environment variables, and install needed modules for the project, used later in vagrant up
   . ./install.sh
   use your favorite editor to write code
 ```
-**Checkin to your own branch using this setup
+**Checkin to your own branch using this setup**
  first time you checkin your branch needs to be created on gerrithub, thus make following command
 ```javascript 
    git add <your files..>
@@ -40,7 +40,7 @@ via vagrant a master and one node is created in VirtualBox and via puppet master
 *********************************************************************
 **Next steps can be found inside the install.sh script**
 *********************************************************************
-```
+```javascript 
 #!/usr/bin/env bash -l
 echo "*******************************************************"
 echo "** Installing vagrant, puppetlabs, virtualbox        **"
@@ -95,23 +95,23 @@ echo "**************************************************************************
 *********************************************************************
 **Following can be done after install**
 *********************************************************************
-**Start vagrant
+**Start vagrant**
 ```javascript 
   vagrant up
 ```
-**Start node01
+**Start node01**
 ```javascript 
   vagrant up node01.docker.local
 ```
-**log into node01
+**log into node01**
 ```javascript 
   vagrant ssh node01.docker.local
 ```
-**Check if docker is working - the puppet agent should have run; puppet agent -t
+**Check if docker is working - the puppet agent should have run; puppet agent -t**
 ```javascript 
   docker
 ```
-**if needed then run puppet agent
+**if needed then run puppet agent**
 ```javascript 
   sudo -s
   puppet agent -t
