@@ -27,8 +27,8 @@ if [ "docker-image-moderor" == "$image" ]; then
    echo -n "- setup for docker images for moderor "
    scp=$(cat setup.conf | jq --raw-output '.'"$project"'.scp')
    mkdir -p $DOCKER_PUPPET_PATH/devtest/modules/docker_images/
-   TRANSFER_OK=$($scp ./puppet/trunk/environments/devtest/modules/ | grep "test")
-   if [ "" == "$TRANSFER_OK" ]; then
+   scp $scp ./puppet/trunk/environments/devtest/modules/
+   if [ "$?" != 0 ]; then
       echo "- docker images not installed"
    else
       echo "- docker images installed"
