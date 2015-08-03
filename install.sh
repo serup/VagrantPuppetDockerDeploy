@@ -42,7 +42,7 @@ fi
 PKG_OK=$(dpkg-query -W --showformat='${Status}\n' 2>&1 vagrant |grep "install ok installed")
 if [ "" == "$PKG_OK" ]; then
   echo -n "- install vagrant "
-  sudo apt-get --force-yes --yes install vagrant 
+  sudo apt-get --force-yes --yes install virtualbox 
   echo " - done."
 else
   echo "- vagrant installed"
