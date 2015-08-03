@@ -13,7 +13,7 @@ if [ "" == "$PKG_OK" ]; then
   sudo apt-get --force-yes --yes install virtualbox 
   echo " - done."
 else
-  echo "- Vitualbox installed"
+  echo "- Virtualbox installed"
 fi
 PKG_OK=$(dpkg-query -W --showformat='${Status}\n' 2>&1 vagrant |grep "install ok installed")
 if [ "" == "$PKG_OK" ]; then
@@ -42,10 +42,22 @@ if [ "" == "$PKG_OK" ]; then
 else
   echo "- puppetlabs-release installed"
 fi
-echo "fetch saz/sudo puppet module"
-puppet module install saz/sudo --modulepath ./puppet/trunk/environments/devtest/modules
-echo "fetch docker puppet module"
-puppet module install garethr/docker --modulepath ./puppet/trunk/environments/devtest/modules
+SAZ_OK=$(puppet module list --modulepath ./puppet/trunk/environments/devtest/modules | grep saz-sudo)
+if [ "" == "$SAZ_OK" ]; then
+  echo -n "- install saz/sudo"
+  puppet module install saz/sudo --modulepath ./puppet/trunk/environments/devtest/modules
+  echo " - done."
+else
+  echo "- saz/sudo puppet module installed"
+fi
+DOCKER_OK=$(puppet module list --modulepath ./puppet/trunk/environments/devtest/modules | grep garethr-docker)
+if [ "" == "$DOCKER_OK" ]; then
+  echo -n "- install garethr/docker puppet module"
+  puppet module install garethr/docker --modulepath ./puppet/trunk/environments/devtest/modules
+  echo " - done."
+else
+  echo "- garethr/docker puppet module installed"
+fi
 echo "*******************************************************************************************"
 echo "environment is now ready! you may run vagrant up and then vagrant up node01.docker.local"
 echo "*******************************************************************************************"
