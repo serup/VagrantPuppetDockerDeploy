@@ -7,6 +7,30 @@ export DOCKER_PUPPET_PATH="$DIR""/puppet/trunk/environments/"
 echo "setting DOCKER_PUPPET_PATH=$DOCKER_PUPPET_PATH"
 echo $DOCKER_PUPPET_PATH > env_docker_puppet_path
 mkdir -p $DOCKER_PUPPET_PATH
+JQ_OK=$(dpkg --get-selections | grep -v deinstall|grep jq)
+if [ "" == "$JQ_OK" ]; then
+  echo -n "- install jq - for handling json files inside batch"
+  sudo apt-get install jq
+  echo " - done."
+else
+  echo "- jq installed"
+fi
+project="$1"
+image=""
+if [ "file=setup.config" == "$project" ]; then 
+   echo "  ___________________________________________________________________ "
+   echo "    Warning no docker project name - please add as first parameter"
+else
+   image=$(cat setup.conf | jq --raw-output '.'"$project"'.image')
+fi
+if [ "docker-image-moderor" == "$image" ]; then
+   echo -n "- setup for docker images for moderor"
+
+   echo " - done. - installed"
+else
+   echo "    no docker images loaded !"
+   echo "  ___________________________________________________________________ "
+fi
 PKG_OK=$(dpkg-query -W --showformat='${Status}\n' 2>&1 virtualbox |grep "install ok installed")
 if [ "" == "$PKG_OK" ]; then
   echo -n "- install Virtualbox "
