@@ -4,6 +4,10 @@ node default {
 }
 
 node /^node01.*/ {
+
+  # howto manually apply this manifest file -- make sure you are sudo
+  # puppet apply /vagrant/puppet/manifests/site.pp --modulepath /vagrant/puppet/trunk/environments/devtest/modules/
+
   # Test message
   notify { "Debug output on ${fqdn}": }
 
@@ -13,8 +17,8 @@ node /^node01.*/ {
   }
   Exec["apt-update"] -> Package <| |>
 
-  include 'docker'
   include sudo
+  include 'docker'
 
   # Add adm group to sudoers with NOPASSWD
   sudo::conf { 'vagrant':
@@ -22,12 +26,20 @@ node /^node01.*/ {
     content  => "vagrant ALL=(ALL) NOPASSWD: ALL",
   }
 
-  docker::image { 'base':
-   ensure => 'absent',
+  docker::image { 'ubuntu':
+   image_tag => 'trusty',
   }
 
-  docker::image { 'ubuntu':
-   ensure  => 'absent',
-   tag     => 'precise'
+  docker::run { 'helloworld':
+    image   => 'ubuntu',
+    command => '/bin/sh -c "while true; do echo hello world; sleep 1; done"',
   }
+
+  docker::run { 'goodbyecruelworld':
+    image 	=> 'ubuntu',
+    command 	=> '/bin/sh -c "while true; do echo goodbye cruel world; sleep 1; done"',
+  }
+
+#  docker::image { 'whalesay': }
+
 }

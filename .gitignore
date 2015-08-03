@@ -1,0 +1,4 @@
+#ignore manifest not manually added
+puppet/trunk/environments/devtest/modules/*
+*.swp
+.vagrant
