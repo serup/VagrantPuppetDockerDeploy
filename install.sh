@@ -17,16 +17,22 @@ else
 fi
 project="$1"
 image=""
-if [ "file=setup.config" == "$project" ]; then 
+if [ "file=setup.config" == "$project" ] || [ "" == "$project" ]; then 
    echo "  ___________________________________________________________________ "
    echo "    Warning no docker project name - please add as first parameter"
 else
    image=$(cat setup.conf | jq --raw-output '.'"$project"'.image')
 fi
 if [ "docker-image-moderor" == "$image" ]; then
-   echo -n "- setup for docker images for moderor"
-
-   echo " - done. - installed"
+   echo -n "- setup for docker images for moderor "
+   scp=$(cat setup.conf | jq --raw-output '.'"$project"'.scp')
+   mkdir -p $DOCKER_PUPPET_PATH/devtest/modules/docker_images/
+   TRANSFER_OK=$($scp ./puppet/trunk/environments/devtest/modules/ | grep "test")
+   if [ "" == "$TRANSFER_OK" ]; then
+      echo "- docker images not installed"
+   else
+      echo "- docker images installed"
+   fi
 else
    echo "    no docker images loaded !"
    echo "  ___________________________________________________________________ "
