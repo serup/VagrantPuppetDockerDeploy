@@ -27,15 +27,14 @@ if [ "docker-image-moderor" == "$image" ]; then
    echo -n "- setup for docker images for moderor "
    scp=$(cat setup.conf | jq --raw-output '.'"$project"'.scp')
    mkdir -p $DOCKER_PUPPET_PATH/devtest/modules/docker_images/
-   scp $scp ./puppet/trunk/environments/devtest/modules/
+   scp $scp $DOCKER_PUPPET_PATH/devtest/modules/docker_images/
    if [ "$?" != 0 ]; then
       echo "- docker images not installed"
    else
       echo "- docker images installed"
    fi
 else
-   echo "    no docker images loaded !"
-   echo "  ___________________________________________________________________ "
+   echo "- docker images NOT installed - please check setup.conf to see if it is correct"
 fi
 PKG_OK=$(dpkg-query -W --showformat='${Status}\n' 2>&1 virtualbox |grep "install ok installed")
 if [ "" == "$PKG_OK" ]; then
