@@ -30,13 +30,18 @@ node /^node01.*/ {
    image_tag => 'trusty',
   }
 
-  docker::image { 'moderor':
-   docker_tar => '/vagrant/puppet/trunk/environments/devtest/modules/docker_images_download/docker-image-moderor.tar' 
+  docker::image { 'skeleton':
+   docker_tar => '/vagrant/puppet/trunk/environments/devtest/modules/docker_images_download/docker-image-skeleton.tar' 
   }
 
   exec { "docker_run":
-     command => "/usr/bin/sudo docker run -d -t docker-image-moderor",
-     require => docker::image[moderor]
+     command => "/usr/bin/sudo docker run -d -t docker-image-skeleton",
+     require => docker::image[skeleton]
+  }
+
+  exec { "activemq_docker":
+     command => "/usr/bin/sudo docker build -t activemq /vagrant/puppet/trunk/environments/devtest/modules/dockerfiles/activemq/.; /usr/bin/sudo docker run -d -t activemq",
+     require => exec[docker_run]
   }
 
 }
