@@ -23,8 +23,8 @@ if [ "file=setup.config" == "$project" ] || [ "" == "$project" ]; then
 else
    image=$(cat setup.conf | jq --raw-output '.'"$project"'.image')
 fi
-if [ "docker-image-moderor" == "$image" ]; then
-   echo -n "- setup for docker images for moderor "
+if [ "docker-image-skeleton" == "$image" ]; then
+   echo -n "- setup for docker images for skeleton "
    scp=$(cat setup.conf | jq --raw-output '.'"$project"'.scp')
    mkdir -p $DOCKER_PUPPET_PATH/devtest/modules/docker_images/
    scp $scp $DOCKER_PUPPET_PATH/devtest/modules/docker_images/
