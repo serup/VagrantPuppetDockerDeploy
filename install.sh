@@ -47,10 +47,12 @@ fi
 PKG_OK=$(dpkg-query -W --showformat='${Status}\n' 2>&1 vagrant |grep "install ok installed")
 if [ "" == "$PKG_OK" ]; then
   echo -n "- install vagrant "
-  sudo apt-get --force-yes --yes install virtualbox 
+  sudo apt-get --force-yes --yes install vagrant 
   echo " - done."
 else
   echo "- vagrant installed"
+  echo "- destroy old setup, so new can run"
+  vagrant destroy
 fi
 VBOX_OK=$(vagrant box list|awk 'BEGIN {strtmp=$1} END {print $strtmp}')
 if [ "" == "$VBOX_OK" ]; then
@@ -90,4 +92,5 @@ fi
 echo "*******************************************************************************************"
 echo "environment is now ready! you may run vagrant up and then vagrant up node01.docker.local"
 echo "*******************************************************************************************"
-
+vagrant up
+vagrant up node01.docker.local
