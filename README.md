@@ -61,15 +61,15 @@ via vagrant a master and one node is created in VirtualBox and via puppet master
   sudo -s
   puppet agent -t
 ```
-**Download a docker test image
+**Download a docker test image**
+```javascript 
+ docker run docker/whalesay cowsay boo
 ```
-docker run docker/whalesay cowsay boo
-```
-**List installed docker images
+**List installed docker images**
 ```
 docker images
 ```
-**Attach to a docker image - log into it
+**Attach to a docker image - log into it**
 ```
 docker attach  $(docker ps|grep docker-image-skeleton|awk '{print $1}')
 ```
