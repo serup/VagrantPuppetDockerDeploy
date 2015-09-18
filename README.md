@@ -37,7 +37,6 @@ via vagrant a master and one node is created in VirtualBox and via puppet master
 ```
  NB! Inorder to make checkin on this GerritHub project, then you need to create a RSA public key and send to administrator - he will then add it to users, making it possible for you to make reviews on your own branch
 
-```
 *********************************************************************
 **Following can be done after install**
 *********************************************************************
