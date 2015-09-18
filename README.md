@@ -69,6 +69,10 @@ docker run docker/whalesay cowsay boo
 ```
 docker images
 ```
+**Attach to a docker image - log into it
+```
+docker attach  $(docker ps|grep docker-image-skeleton|awk '{print $1}')
+```
 
  
 *****************************
