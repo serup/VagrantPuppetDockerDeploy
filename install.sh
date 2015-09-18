@@ -1,7 +1,7 @@
 #!/usr/bin/env bash -l
-echo "*******************************************************"
-echo "** Installing vagrant, puppetlabs, virtualbox        **"
-echo "*******************************************************"
+echo "********************************************************"
+echo "** Installing vagrant, puppetlabs, virtualbox, docker **"
+echo "********************************************************"
 DIR=$(cd . && pwd)
 export DOCKER_PUPPET_PATH="$DIR""/puppet/trunk/environments/"
 echo "setting DOCKER_PUPPET_PATH=$DOCKER_PUPPET_PATH"
@@ -19,7 +19,7 @@ project="$1"
 image=""
 if [ "file=setup.config" == "$project" ] || [ "" == "$project" ]; then 
    echo "  ___________________________________________________________________ "
-   echo "    Warning no docker project name - please add as first parameter"
+   echo "    Warning no docker PROJECT name - please add it as first parameter - like this '. ./install.sh skeleton'"
 else
    image=$(cat setup.conf | jq --raw-output '.'"$project"'.image')
 fi
